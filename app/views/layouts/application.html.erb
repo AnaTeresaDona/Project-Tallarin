@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tallarin</title>
+    <title><%=t('site_title')%></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,11 +18,12 @@
        </div>
       <div class="container">
       <% if alert || notice%>
-        <div class="alert alert-success mt-3”>
+        <div class="alert alert-success mt-3” role="alert >
             <%= notice %>
             <%= alert %>
         </div>
-    <%end%>
+       <%end%>
+        
         <%= yield %>
       </div>
     </div>

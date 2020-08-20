@@ -1,20 +1,24 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="<%= root_path%>">Twitter</a>
+    <a class="navbar-brand" href="<%= root_path%>"><%=t('site_title')%></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+           <li class="nav-item">
+            <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class:'nav-link'%>
+          </li> 
+        <%else%>
           <li class="nav-item active">
-            <%= link_to 'Registro', root_path, class:'nav-link'%>
+            <%= link_to 'Registro', new_user_registration_path, class:'nav-link'%>
           </li>
           <li class="nav-item">
-            <%= link_to 'Login', root_path, class:'nav-link'%>
+            <%= link_to 'Login', new_user_session_path, class:'nav-link'%>
           </li>
-          <%# <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li> %>
+        <%end%>
+
         </ul>
       </div>
   </div>
