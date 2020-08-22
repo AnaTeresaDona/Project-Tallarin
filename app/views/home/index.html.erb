@@ -1,11 +1,12 @@
 <h1>Home#index</h1>
 
-<div>
+<div class="container my-4">
+    <div class="row">
     
     <% @tweets.each do |tweet| %>
 
-        <div class="card my-3" style="width: 18rem;">
-            <div class="card-body">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-5">
+            <div class="card mx-5">
                 <%= image_tag (tweet.user.photo_url), class:"avatar-in-tweet card-img-top" %>
                 <%= tweet.content %>
             <hr/>
@@ -16,7 +17,10 @@
         </div>
             <%end%>
 
-<%# <%= paginate @tweets%>
-<%= link_to_next_page @tweets, "Mostrar más"%>
-
+    </div>
 </div>
+
+<div class="mt-2">
+<%= paginate @tweets%>
+</div>
+
