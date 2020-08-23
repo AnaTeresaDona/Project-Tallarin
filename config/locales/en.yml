@@ -32,3 +32,14 @@
 en:
   hello: "Hello world"
   site_title: "Tallarín"
+  datetime:
+    distance_in_words:
+      less_than_x_minutes:
+        one: "menos de un minuto"
+        other: "menos de %{count} minutos"
+      x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one: "aproximadamente hace 1 hora"
+        other: "aproximadamente hace %{count} horas"

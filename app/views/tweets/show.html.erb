@@ -1,14 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="col-12 col-sm-12 col-md-6 col-lg-4 my-5">
+  <div class="card mx-5">
+      <%= image_tag (@tweet.user.photo_url), class:"avatar-in-tweet card-img-top" %>
+      <span class="username">
+          <%= @tweet.user.username%> dice: 
+      </span>
+      <br/>
+      <span class="">
+          <%= link_to '<i class="far fa-calendar-alt"></i>'.html_safe+distance_of_time_in_words(Time.now, @tweet.created_at), @tweet%>
+      </span><br/>
+      <%= @tweet.content %>
+      <%if @tweet.is_retweet?%>
+          <%= link_to "Retweet...", @tweet.tweet_ref%>
 
-<p>
-  <strong>Content:</strong>
-  <%= @tweet.content %>
-</p>
+      <%end%>
+  <hr/>
+      <div class="text-center tweet-options">
+          <span>
+              <%= @tweet.likes.count %> 
+              <%= link_to ('<i class="'+@tweet.like_icon(current_user)+' text-warning"></i>').html_safe, tweet_likes_path(@tweet), method: :post%>                        
+          </span>
+              |
+          <span>
+              <%= @tweet.count_rt%>
+              <%if @tweet.count_rt > 0 %> 
+                  <%= link_to '<i class="fas fa-retweet text-warning"></i>'.html_safe, tweet_retweet_path(@tweet), method: :post %>
+              <%else%>
+                  <%= link_to '<i class="fas fa-retweet text-muted"></i>'.html_safe, tweet_retweet_path(@tweet), method: :post %>
+              <%end%>
+          </span>
+      </div>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @tweet.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
-<%= link_to 'Back', tweets_path %>
+<div>
+  <% @tweet.liking_users.each do |user| %>
+    <%= image_tag (user.photo_url), class:"avatar-in-tweet rounded" %>
+  <%end%>
+</div>

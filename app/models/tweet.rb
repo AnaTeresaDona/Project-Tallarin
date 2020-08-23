@@ -24,4 +24,32 @@ class Tweet < ApplicationRecord
   def remove_like(user)
     Like.where(user: user, tweet: self).first.destroy
   end
+
+  def like_icon(user)
+    if is_liked?(user)
+      'fas fa-heart'
+    else
+      'far fa-heart'
+    end
+  end
+
+  def count_rt
+    Tweet.where(rt_ref: self.id).count
+  end
+
+  def is_retweet?
+    rt_ref ? true : false
+  end
+
+  def tweet_ref
+    Tweet.find(self.rt_ref)
+  end
+
+  # def retweet_icon
+  #   if self.count_rt > 0
+  #     "text-warning"
+  #   else
+  #     "text-muted"
+  #   end
+  # end
 end
