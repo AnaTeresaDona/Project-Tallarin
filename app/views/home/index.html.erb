@@ -1,8 +1,12 @@
-<h1>Home#index</h1>
+
 
 <div class="container my-4">
     <div class="row">
-    
+    <% if user_signed_in?%>
+        <div class="col-12">
+            <%= render 'tweets/form', tweet: @tweet %>
+        </div>
+    <%end%>
     <% @tweets.each do |tweet| %>
 
         <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-5">
@@ -10,8 +14,20 @@
                 <%= image_tag (tweet.user.photo_url), class:"avatar-in-tweet card-img-top" %>
                 <%= tweet.content %>
             <hr/>
-                <div class="text-center">
-                <%= tweet.likes.count %> likes | 0 re-tweets
+                <div class="text-center tweet-options">
+                    <span>
+                        <%= tweet.likes.count %> 
+                        <% if tweet.is_liked?(current_user)%>
+                            <%= link_to '<i class="fas fa-heart text-warning"></i>'.html_safe, tweet_likes_path(tweet), method: :post %>
+                        <%else%>
+                            <%= link_to '<i class="far fa-heart text-warning"></i>'.html_safe, tweet_likes_path(tweet), method: :post %>
+                        <%end%>
+                    </span>
+                    <span>
+
+                    </span>
+                        
+                         | 0 re-tweets
                 </div>
             </div>
         </div>
