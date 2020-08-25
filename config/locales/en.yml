@@ -43,3 +43,13 @@ en:
       about_x_hours:
         one: " hace aproximadamente 1 hora"
         other: " hace aproximadamente %{count} horas"
+      about_x_days:
+        one: " hace aproximadamente 1 día"
+        other: " hace aproximadamente %{count} días"
+      about_x_months:
+        one: " hace 1 mes"
+        other: " hace aproximadamente %{count} meses"
+      about_x_years:
+        one: " hace aproximadamente 1 año"
+        other: " hace aproximadamente %{count} años"
+    

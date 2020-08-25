@@ -10,7 +10,7 @@
     <% @tweets.each do |tweet| %>
 
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-5">
-            <div class="card mx-1">
+            <div class="card mx-1 bg-light">
                 
                 <div class="container">
                     <div class="row">
@@ -20,7 +20,7 @@
 
                         <div class="col-sm">
                             <span class="">
-                                <%= link_to '<i class="far fa-calendar-alt"></i>'.html_safe+distance_of_time_in_words(Time.now, tweet.created_at), tweet%>
+                                <%= link_to '<i class="far fa-calendar-alt text-muted"></i>'.html_safe+distance_of_time_in_words(Time.now, tweet.created_at), tweet%>
                             </span>
                             <br/>
                             <span class="username">
@@ -29,8 +29,8 @@
                             <br/>
                         
                             <%= tweet.content %>
-                            <%if tweet.is_retweet?%>
-                                <%= link_to "Retweet...", tweet.tweet_ref%>
+                            <%if tweet.is_retweet? %>
+                                <%= link_to "Original", tweet.tweet_ref%>
 
                             <%end%>
                         <hr/>
